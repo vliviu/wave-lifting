@@ -1,0 +1,18 @@
+cmake_minimum_required (VERSION 2.8.0 FATAL_ERROR)
+project (ada-sg CXX)
+
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -g")
+
+set(RV_SOURCES 	src/main.cpp
+				src/sg-lib/SparseGrid.cpp
+				src/sg-lib/GlobalGrid.cpp
+				src/sg-lib/WaveletGrid.cpp
+				src/sg-lib/LocalpGrid.cpp
+				src/sg-lib/FileIO.cpp
+)
+
+include_directories("/usr/local/include/eigen3")
+set (RV_LIBS ${EXTRA_LIBS} pthread)
+
+add_executable (sg ${RV_SOURCES})
+target_link_libraries (sg ${RV_LIBS})
